@@ -153,3 +153,26 @@ function validarUrlComFiltro(string $url): bool
     return filter_var($url, FILTER_VALIDATE_URL);
 
 }
+
+function localhost():bool
+{
+    $servidor = filter_input(INPUT_SERVER,'SERVER_NAME');
+
+    if($servidor == 'localhost')
+    {
+        return true;
+    }
+     return false;
+}
+
+function url(string $url): string
+{
+    $servidor = filter_input(INPUT_SERVER,'SERVER_NAME');
+    $ambiente = (!$servidor == 'localhost' ? URL_DESENVOLVIMENTO: URL_PRODUCAO);
+
+    if(str_starts_with($url, '/'))
+    {
+    return $ambiente.$url;
+    }
+    return $ambiente.'/'.$url;
+}
