@@ -118,10 +118,14 @@ function ValidarEmail(string $email): bool{
 
 
 /**
- * Valida Url pelo filter_validate_url
- * @param string $url valida um url se seguir os filtros do filter_validate_url
- * @return bool retorna true se a url for valida pelos padroes e false se nao for
- */
+ * Valida a URL usando uma abordagem simples com str_contains.
+ *
+ * Verifica se a URL possui um comprimento mínimo, contém um ponto 
+ * (.) e começa com http:// ou https://.
+ *
+ * @param string $url A URL a ser validada.
+ * @return bool Retorna true se a URL for válida, e false caso contrário.
+ * */
 function validarUrl(string $url): bool
 {
     if(mb_strlen($url) < 9){
@@ -135,7 +139,15 @@ if(str_contains($url,'http://') or str_contains($url, 'https://')){
 }
 return false;}
 
-
+/**
+ * Valida a URL usando o filtro FILTER_VALIDATE_URL.
+ *
+ * Utiliza filter_var para verificar se a URL é válida segundo 
+ * os padrões do PHP.
+ *
+ * @param string $url A URL a ser validada.
+ * @return bool Retorna true se a URL for válida, e false caso contrário.
+ * */
 function validarUrlComFiltro(string $url): bool
 {
     return filter_var($url, FILTER_VALIDATE_URL);
