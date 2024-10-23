@@ -122,7 +122,22 @@ function ValidarEmail(string $email): bool{
  * @param string $url valida um url se seguir os filtros do filter_validate_url
  * @return bool retorna true se a url for valida pelos padroes e false se nao for
  */
-function validarUrl(string $url): bool{
+function validarUrl(string $url): bool
+{
+    if(mb_strlen($url) < 9){
+        return false;
+}
+if(!str_contains($url,'.')){
+    return false;
+}
+if(str_contains($url,'http://') or str_contains($url, 'https://')){
+    return true;
+}
+return false;}
+
+
+function validarUrlComFiltro(string $url): bool
+{
     return filter_var($url, FILTER_VALIDATE_URL);
 
 }

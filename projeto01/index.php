@@ -12,10 +12,13 @@ include_once 'funcoes.php';
 
 
 // var_dump(validarUrl('http://teste.com'));
-if (validarUrl('http://teste.com')) {
-    echo 'URL válida';
-} else {
-    echo 'URL invalida';
-}
+// if (validarUrl('http://teste.com')) {
+//     echo 'URL válida';
+// } else {
+//     echo 'URL invalida';
+// }
 
-// var_dump(ValidarEmail('teste@gmail.com'));
+$url = 'http://unset.com';
+var_dump(validarUrl($url));
+echo'<hr>';
+var_dump(validarUrlComFiltro($url)); 
