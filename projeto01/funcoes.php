@@ -104,10 +104,24 @@ function contarTempo(string $data)
 
 }
 
+
+/**
+ * Função que Valida um Email com filter_validate_email
+ * @param string $email recebe um email que precisa ter nome@email_qualquer.com                     
+ *                      ex:joao@gmail.com -> true
+ *                      ex:carlos@gmail -> false
+ * @return bool retorna boolean se tiver no padrão e se nao retorna false
+ */
 function ValidarEmail(string $email): bool{
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
+
+/**
+ * Valida Url pelo filter_validate_url
+ * @param string $url valida um url se seguir os filtros do filter_validate_url
+ * @return bool retorna true se a url for valida pelos padroes e false se nao for
+ */
 function validarUrl(string $url): bool{
     return filter_var($url, FILTER_VALIDATE_URL);
 
