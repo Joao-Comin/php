@@ -2,18 +2,18 @@
     function saudacao():string
     {
         date_default_timezone_set('America/Sao_Paulo');
-        echo $hora = date('H');
+        $hora = date('H');
         if($hora >= 0 && $hora<=5){
-            $saudacao = 'boa madrugada';
+            $saudacao = 'Boa madrugada';
         }
         else if($hora >= 5&& $hora<= 12){
-        $saudacao = 'bom dia';
+        $saudacao = 'Bom dia';
         }
         else if($hora >= 13 && $hora<= 18){
-            $saudacao = 'boa tarde';
+            $saudacao = 'Boa tarde';
         }
         else{
-            $saudacao = 'boa noite';
+            $saudacao = 'Boa noite';
         }
         return $saudacao;
  }
@@ -154,6 +154,10 @@ function validarUrlComFiltro(string $url): bool
 
 }
 
+/**
+ * Função de Criação de uma URL localhost
+ * @return bool retorna true se for localhost e false se não for
+ */
 function localhost():bool
 {
     $servidor = filter_input(INPUT_SERVER,'SERVER_NAME');
@@ -165,6 +169,11 @@ function localhost():bool
      return false;
 }
 
+/**
+ * Função URL
+ * @param string $url recebe uma url
+ * @return string com o filtro e as configurações do sistema retorna um localhost com url
+ */
 function url(string $url): string
 {
     $servidor = filter_input(INPUT_SERVER,'SERVER_NAME');
@@ -175,4 +184,24 @@ function url(string $url): string
     return $ambiente.$url;
     }
     return $ambiente.'/'.$url;
+}
+
+/**
+ * Função dataAtual
+ * @return string retorna uma string vinda de arrays, que recebem um indice correspondente da data,semana,mes e ano atual.
+ */
+function dataAtual(): string
+{
+    $diaMes = date('d');
+    $diaSemana = date('w');
+    $Mes = date('n') -1;
+    $Ano = date('Y');
+
+    $nomesDiasDaSemana = ['domingo', 'segunda-feira','terça-feira', 'quarta-feira','quinta-feira','sexta-feira', 'sábado'];
+
+    $nomesDosMeses = ['Janeiro','fevereiro','Março','Abril','Maio','Junho','Julho', 'Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+    $dataFormatada = $nomesDiasDaSemana[$diaSemana].', '.$diaMes.' de '.$nomesDosMeses[$Mes].' de '.$Ano;
+    
+    return $dataFormatada;
 }
