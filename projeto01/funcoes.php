@@ -205,3 +205,25 @@ function dataAtual(): string
     
     return $dataFormatada;
 }
+/** 
+* Gera um "slug" a partir de uma string.
+*
+* O slug é uma versão simplificada da string que remove acentos, caracteres especiais 
+* e substitui espaços por sublinhados. A saída é convertida para letras minúsculas.
+*
+* @param string $string A string de entrada a ser convertida.
+* @return string O slug gerado a partir da string de entrada.
+*/
+function slug(string $string):string
+{
+    $mapa['a'] = 'ÀÁÂÃÄÅàáâãäåÆæÇçÈÉÊËèéêëÌÍÎÏìíîïÐÑñÒÓÔÕÖØòóôõöøÙÚÛÜùúûüÝýÿßŒœ!@#$%^&*()_+-={}[]|\:;"\'<>,.?/~`´`¨ª¬°§¶•◊™©®¤¢£¥¦≈≠';
+
+$mapa['b'] = 'AAAAAAaaaaaaAaCcEEEEeeeeIIIIiiiiDNnOOOOOOooooooUUUUuuuuYyyBOo                                                             ';
+
+$slug = strtr( utf8_decode($string), utf8_decode($mapa['a']),$mapa['b'] );
+$slug = strip_tags(trim($slug));
+$slug = str_replace(' ','_', $slug);
+$slug = str_replace(['_____','____','___','__','_'],'_', $slug);
+
+    return strtolower(utf8_decode($slug));
+}
