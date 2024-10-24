@@ -235,3 +235,26 @@ $slug = str_replace(['_____','____','___','__','_'],'_', $slug);
 
     return strtolower(utf8_decode($slug));
 }
+
+function validarCpf(string $cpf):bool
+{
+    $cpf = limparNumero($cpf);
+    if(mb_strlen($cpf) != 11 or preg_match('/(\d)\1{10}/', $cpf)){
+        return false;
+    }
+    for ($i = 9; $i < 11; $i++) {
+        for ($j = 0, $c = 0; $c < $i; $c++) {
+            $j += $cpf[$c] * (($i + 1) - $c);
+        }
+        $j = ((10 * $j) % 11) % 10;
+        if ($cpf[$c] != $j) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function limparNumero(string $numero): string
+{
+    return preg_replace('/[^0-9]/','', $numero);
+}
