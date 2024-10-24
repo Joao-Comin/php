@@ -7,6 +7,8 @@ include_once 'funcoes.php';
 include './sistema/Nucleo/Mensagem.php';
 
 $msg = new Mensagem();
+echo $msg->renderizar();
+echo '<hr>';
 var_dump($msg);
 
 // $cpf = '111.433.699-80';
