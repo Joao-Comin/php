@@ -7,11 +7,11 @@ require_once 'sistema/configuracao.php';
 include_once 'funcoes.php';
 include './sistema/Nucleo/Mensagem.php';
 
+// $msg = new Mensagem();
+// echo $msg->sucesso('Mensagem de Sucesso')->renderizar();
+// echo '<hr>';
+// echo $msg->erro('Mensagem de Erro')->renderizar();
+// echo'<hr>';
+// var_dump($msg);
 
-
-$msg = new Mensagem();
-echo $msg->sucesso('Mensagem de Sucesso')->renderizar();
-echo '<hr>';
-echo $msg->erro('Mensagem de Erro')->renderizar();
-echo'<hr>';
-var_dump($msg);
+echo (new Mensagem())->erro('Mensagem de erro')->renderizar();
