@@ -1,10 +1,17 @@
 <?php
 
+namespace projeto01\sistema\Nucleo;
+
+/**
+ * Classe responsavel por exibir mensagens do sistema
+ * @author Joao Victor Comin <joaovictorcomin2005@gmail.com>
+ * @copyright 2024 cooperja
+ * 
+ */
 class Mensagem
 {
     private $texto;
     private $css;
-
 
     public function sucesso(string $mensagem): Mensagem
     {
