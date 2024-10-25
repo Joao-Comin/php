@@ -1,6 +1,6 @@
 <?php
 
-namespace Projeto01\Sistema\Nucleo;
+namespace sistema\Nucleo;
 class Funcoes {
 
     public static function saudacao(): string {

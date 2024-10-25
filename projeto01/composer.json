@@ -1,0 +1,17 @@
+{
+    "name": "joaovictor/php8",
+    "description": "php8",
+    "type": "project",
+    "authors": [
+        {
+            "name": "joao victor"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "sistema\\": "sistema/"
+        }
+    }
+}
