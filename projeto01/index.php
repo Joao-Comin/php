@@ -2,13 +2,16 @@
 <?php
 
 //localhost link: http://localhost:8081/projeto01/index.php
-
 require __DIR__ . '/vendor/autoload.php';
 
-echo SITE_NOME;
 
-var_dump(\sistema\Nucleo\Funcoes::validarCpf('11143369980')
-) ;
+
+echo'removido';
+
+// echo SITE_NOME;
+
+// var_dump(\sistema\Nucleo\Funcoes::validarCpf('11143369980')
+// ) ;
 
 
 
