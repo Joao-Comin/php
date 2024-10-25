@@ -6,20 +6,17 @@
 require_once 'sistema/configuracao.php';
 include_once 'sistema/Nucleo/funcoes.php';
 include './sistema/Nucleo/Mensagem.php';
+include './sistema/Nucleo/Controlador.php';
+
+use Projeto01\Sistema\Nucleo\Controlador as controlador;
+
+$controlador = new controlador('sei lá');
+echo'<hr>';
+var_dump($controlador);
 
 use Projeto01\Sistema\Nucleo\Funcoes as funcoes;
 // use projeto01\sistema\Nucleo\Mensagem as msg;
 // echo (new msg)->sucesso('Servidor Aberto Com Sucesso');
 
 
-$funcoes = new Funcoes();
-var_dump($funcoes -> validarCpf(11143369980)); 
- echo'<hr>';
-// echo $funcoes-> dataAtual();
-// echo'<hr>';
-// var_dump($funcoes->validarEmail('joaovictorcomin2005-gmail.com')); 
-
-echo Funcoes::limparNumero('t45@re5362517--77');
-echo'<hr>';
-echo funcoes::contarTempo('2023-12-30 23:59-59');
 
