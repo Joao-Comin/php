@@ -27,4 +27,8 @@ class Mensagem
 
         return filter_var(strip_tags($mensagem), FILTER_SANITIZE_SPECIAL_CHARS);
     }
+    public function __toString()
+    {
+        return $this->renderizar();
+    }
 }

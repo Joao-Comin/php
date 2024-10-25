@@ -14,4 +14,4 @@ include './sistema/Nucleo/Mensagem.php';
 // echo'<hr>';
 // var_dump($msg);
 
-echo (new Mensagem())->erro('Mensagem de erro')->renderizar();
+echo (new Mensagem())->sucesso('Servidor Aberto Com Sucesso');
