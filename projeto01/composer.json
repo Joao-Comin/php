@@ -15,5 +15,8 @@
         "files":[
             "sistema/configuracao.php"
         ]
+    },
+    "require": {
+        "pecee/simple-router": "dev-master"
     }
 }
