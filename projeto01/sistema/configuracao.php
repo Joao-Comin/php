@@ -11,3 +11,4 @@ define('SITE_DESCRIÇÃO','Unset - Tecnologia em Sistemas');
 define('URL_PRODUCAO','http://unset.com.br');
 define('URL_DESENVOLVIMENTO','http://localhost/php');
 
+define('URL_SITE','projeto01/');
