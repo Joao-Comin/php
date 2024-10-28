@@ -140,12 +140,19 @@ class Funcoes {
      * @param string $url recebe uma URL
      * @return string com o filtro e as configurações do sistema retorna um localhost com url
      */
-    public static function url(string $url = null): string {
+    public static function url(?string $url = null): string {
         $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
         $ambiente = ($servidor === 'localhost' ? URL_DESENVOLVIMENTO : URL_PRODUCAO);
-
+    
+        // Se $url é nulo ou vazio, pode retornar a URL base
+        if (is_null($url) || $url === '') {
+            return $ambiente . '/'; // Retorna o ambiente base
+        }
+    
         return str_starts_with($url, '/') ? $ambiente . $url : $ambiente . '/' . $url;
     }
+    
+    
 
     /**
      * Função dataAtual
