@@ -10,7 +10,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "sistema\\": "sistema/"
+            "Sistema\\": "sistema/"
         },
         "files":[
             "sistema/configuracao.php"

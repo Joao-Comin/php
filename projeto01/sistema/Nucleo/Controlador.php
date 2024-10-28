@@ -1,11 +1,14 @@
 <?php
-namespace Projeto01\Sistema\Nucleo;
+namespace Sistema\Nucleo;
+
+use Sistema\Suporte\Template;
 class Controlador
 {   
-    public function __construct(string $tema
-    )
+    protected Template $template;
+
+    public function __construct(string $diretorio)
     {
-        echo $tema;
+        $this->template = new Template($diretorio);
     }
 
 

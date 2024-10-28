@@ -19,10 +19,6 @@ class ComposerStaticInita4ecb4030feefd9ca6f76a193bb22879
     );
 
     public static $prefixLengthsPsr4 = array (
-        's' => 
-        array (
-            'sistema\\' => 8,
-        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -32,6 +28,7 @@ class ComposerStaticInita4ecb4030feefd9ca6f76a193bb22879
             'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Sistema\\' => 8,
         ),
         'P' => 
         array (
@@ -40,10 +37,6 @@ class ComposerStaticInita4ecb4030feefd9ca6f76a193bb22879
     );
 
     public static $prefixDirsPsr4 = array (
-        'sistema\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/sistema',
-        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -59,6 +52,10 @@ class ComposerStaticInita4ecb4030feefd9ca6f76a193bb22879
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Sistema\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/sistema',
         ),
         'Pecee\\' => 
         array (
