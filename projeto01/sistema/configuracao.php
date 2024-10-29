@@ -8,7 +8,7 @@ define('SITE_NOME','Unset');
 define('SITE_DESCRIÇÃO','Unset - Tecnologia em Sistemas');
 
 //urls do sistema
-define('URL_PRODUCAO','http://unset.com.br');
-define('URL_DESENVOLVIMENTO','http://localhost/php');
+define('URL_PRODUCAO','http://localhost:8081/projeto01');
+define('URL_DESENVOLVIMENTO','http://unset.com.br');
 
-define('URL_SITE','projeto01/');
+define('URL_SITE','/projeto01/');
