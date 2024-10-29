@@ -6,7 +6,7 @@ require __DIR__ . '/vendor/autoload.php';
 //require 'Rotas.php';
 use Sistema\Modelo\PostModelo;
 
-$posts = (new PostModelo())->ler();
+$posts = (new PostModelo())->ler(3);
 foreach($posts as $post){
     echo $post->titulo.'<br>';
 }
