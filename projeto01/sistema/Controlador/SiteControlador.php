@@ -3,6 +3,7 @@
 namespace Sistema\Controlador;
 
 use Sistema\Nucleo\Controlador;
+use Sistema\Modelo\PostModelo;
 class SiteControlador extends Controlador {
 
     public function __construct() {
@@ -10,8 +11,9 @@ class SiteControlador extends Controlador {
     }
     public function index(): void
     {
+        $posts = (new PostModelo())->ler();
         echo $this->template->renderizar('index.html',[
-            
+            'posts' => $posts
             
         ]);
     }

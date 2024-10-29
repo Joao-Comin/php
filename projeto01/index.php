@@ -3,11 +3,5 @@
 //localhost link: http://localhost:8081/projeto01/index.php
 require __DIR__ . '/vendor/autoload.php';
 
-//require 'Rotas.php';
-use Sistema\Modelo\PostModelo;
-
-$posts = (new PostModelo())->ler(3);
-foreach($posts as $post){
-    echo $post->titulo.'<br>';
-}
+require 'Rotas.php';
 
