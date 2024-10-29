@@ -7,7 +7,13 @@
     <!-- <link rel="stylesheet" href="{{ url('/Templates/Assets/Css/estilos.css')}}">
     <link rel="stylesheet" href="{{url('/Templates/Site/Assets/Css/Site.css')}}"> -->
   
-    <title>Document</title>
+    <title>
+        {% if titulo %}
+        {{titulo}}
+        {% else %}
+        {{constant('SITE_NOME')}}
+        {% endif %}
+    </title>
   
 </head>
 <body>
