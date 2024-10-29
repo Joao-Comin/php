@@ -4,15 +4,10 @@
 require __DIR__ . '/vendor/autoload.php';
 
 //require 'Rotas.php';
-use Sistema\Nucleo\Conexao;
+use Sistema\Modelo\PostModelo;
 
-$con = Conexao::getInstancia();
-
-
-// echo SITE_NOME;
-
-// var_dump(\sistema\Nucleo\Funcoes::validarCpf('11143369980')
-// ) ;
-
-
+$posts = (new PostModelo())->ler();
+foreach($posts as $post){
+    echo $post->titulo.'<br>';
+}
 
