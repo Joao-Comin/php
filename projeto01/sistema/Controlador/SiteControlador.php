@@ -22,4 +22,12 @@ class SiteControlador extends Controlador {
             'titulo' => 'Sobre Nós'
         ]);
     }
+
+    public function erro404():void
+    {
+        echo $this->template->renderizar('404.html',[
+            'titulo' => 'Página Não Encontrada'
+        ]);
+    }
+
 }

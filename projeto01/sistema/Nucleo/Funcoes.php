@@ -1,6 +1,8 @@
 <?php
 
 namespace sistema\Nucleo;
+
+use Exception;
 class Funcoes {
 
     public static function saudacao(): string {
@@ -196,7 +198,8 @@ class Funcoes {
     public static function validarCpf(string $cpf): bool {
         $cpf = self::limparNumero($cpf);
         if (mb_strlen($cpf) != 11 || preg_match('/(\d)\1{10}/', $cpf)) {
-            return false;
+                
+            throw new Exception('CPF precisa de 11 digitos');
         }
         for ($i = 9; $i < 11; $i++) {
             for ($j = 0, $c = 0; $c < $i; $c++) {
@@ -204,10 +207,20 @@ class Funcoes {
             }
             $j = ((10 * $j) % 11) % 10;
             if ($cpf[$c] != $j) {
-                return false;
+                throw new Exception('CPF Invalido');
             }
         }
         return true;
     }
-}
+    
+    public static function redirecionar(string $url = null): void
+    {
+        header('HTTP/1.1 302 Found');
 
+        $local = ($url ? self::url($url) : self::url());
+
+        header("Location: {$local} ");
+
+        exit;
+    }
+}
