@@ -6,7 +6,7 @@
       <a href="/" class="d-flex align-items-center mb-3 link-bg-emphasis text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       </a>
-      <p class="text-bg-dark">&copy; 2024 {{constant('SITE_NOME')}}</p>
+      <p class="text-bg-dark">&copy;{{ post.published_at|date("Y/m/d") }} {{constant('SITE_NOME')}}</p>
     </div>
 
     <div class="col mb-3">
