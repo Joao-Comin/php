@@ -4,6 +4,8 @@ namespace Sistema\Controlador;
 
 use Sistema\Nucleo\Controlador;
 use Sistema\Modelo\PostModelo;
+use Sistema\Nucleo\Funcoes; 
+
 class SiteControlador extends Controlador {
 
     public function __construct() {
@@ -11,7 +13,7 @@ class SiteControlador extends Controlador {
     }
     public function index(): void
     {
-        $posts = (new PostModelo())->ler();
+        $posts = (new PostModelo())->busca();
         echo $this->template->renderizar('index.html',[
             'posts' => $posts
             
@@ -30,6 +32,18 @@ class SiteControlador extends Controlador {
         echo $this->template->renderizar('404.html',[
             'titulo' => 'Página Não Encontrada'
         ]);
+    }
+    public function post(int $id):void
+    {
+        $post = (new PostModelo())->buscaPorId($id);
+        if(!$post){
+            Funcoes::redirecionar('404');
+        }
+
+        echo $this->template->renderizar('post.html',[
+            'post' => $post
+        ]);
+        
     }
 
 }

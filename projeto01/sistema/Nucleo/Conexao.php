@@ -23,7 +23,7 @@ class Conexao
             }
             return self::$instancia;
         }
-     }
+     } 
 
      protected function __construct()
      {

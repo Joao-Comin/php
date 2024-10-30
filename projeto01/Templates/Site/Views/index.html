@@ -1,19 +1,71 @@
 {% extends 'Base.html' %}
-{% block conteudo %} 
+{% block conteudo %}
 
-<div class="container py-5">
+<style>
+    /* Remover a cor azul padrão dos links nos cards */
+    .card a {
+        color: black; /* Altera a cor do texto do link para preto */
+    }
+
+    /* Mantenha a cor ao passar o mouse */
+    .card a:hover {
+        text-decoration: underline; /* Opcional: adiciona um sublinhado ao passar o mouse */
+        color: darkgray; /* Muda a cor ao passar o mouse, se desejar */
+    }
+</style>
+
+<div class="container-fluid py-5 text-bg-light">
     <div class="row">
-    {% for post in posts %}
-    <div class="col-md-3">
-        <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">{{post.titulo}}</h5>
-              <p class="card-text">{{resumirTexto(post.texto, 100)}}</p>
+        <!-- Posts -->
+        <div class="col-md-8">
+            <div class="row text-bg-light">
+                {% for post in posts %}
+                <div class="col-md-6">
+                    <div class="card mb-4 text-bg-light">
+                        <div class="card-body">
+                            <a href="{{url('post/'~post.id)}}" class="text-decoration-none">
+                                <h5 class="card-title">{{post.titulo}}</h5>
+                                <p class="card-text">{{resumirTexto(post.texto, 100)}}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Sidebar colunas -->
+        <div class="col-md-4">
+          <div class="d-flex flex-column align-items-stretch flex-shrink-0 text-bg-light" style="width: 380px;">
+            <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none">
+              <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+              <span class="fs-5 fw-semibold">List group</span>
+            </a>
+            <div class="list-group list-group-flush border-bottom scrollarea">
+              
+              <!-- List Items -->
+              <a href="#" class="list-group-item list-group-item-action text-bg-light py-3 lh-sm" aria-current="true">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                  <strong class="mb-1">List group item heading</strong>
+                  <small>Wed</small>
+                </div>
+                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+              </a>
+          
+              <!-- Repetindo o item como exemplo -->
+              <a href="#" class="list-group-item list-group-item-action text-bg-light py-3 lh-sm">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                  <strong class="mb-1">List group item heading</strong>
+                  <small class="text-body-secondary">Tues</small>
+                </div>
+                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+              </a>
+          
+              <!-- Adicione outros itens de lista da mesma maneira -->
             </div>
           </div>
+        </div>
     </div>
-    {%endfor %}
-</div>
 </div>
 
 {% endblock %}
