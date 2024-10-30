@@ -2,15 +2,14 @@
 {% block conteudo %}
 
 <style>
-    /* Remover a cor azul padrão dos links nos cards */
     .card a {
-        color: black; /* Altera a cor do texto do link para preto */
+        color: black; 
     }
 
-    /* Mantenha a cor ao passar o mouse */
+    /* Mantem a cor ao passar o mouse */
     .card a:hover {
-        text-decoration: underline; /* Opcional: adiciona um sublinhado ao passar o mouse */
-        color: darkgray; /* Muda a cor ao passar o mouse, se desejar */
+        text-decoration: underline;
+        color: darkgray;
     }
 </style>
 
@@ -19,7 +18,7 @@
         <!-- Posts -->
         <div class="col-md-8">
             <div class="row text-bg-light">
-                {% for post in posts %}
+              {% for post in posts %}
                 <div class="col-md-6">
                     <div class="card mb-4 text-bg-light">
                         <div class="card-body">
@@ -34,7 +33,7 @@
             </div>
         </div>
 
-        <!-- Sidebar colunas -->
+        <!-- Colunas do Sidebar -->
         <div class="col-md-4">
           <div class="d-flex flex-column align-items-stretch flex-shrink-0 text-bg-light" style="width: 380px;">
             <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none">
@@ -43,7 +42,7 @@
             </a>
             <div class="list-group list-group-flush border-bottom scrollarea">
               
-              <!-- List Items -->
+              <!-- Lista de Itens do Sidebar-->
               <a href="#" class="list-group-item list-group-item-action text-bg-light py-3 lh-sm" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                   <strong class="mb-1">List group item heading</strong>
@@ -52,7 +51,6 @@
                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
           
-              <!-- Repetindo o item como exemplo -->
               <a href="#" class="list-group-item list-group-item-action text-bg-light py-3 lh-sm">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                   <strong class="mb-1">List group item heading</strong>
@@ -61,7 +59,6 @@
                 <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
           
-              <!-- Adicione outros itens de lista da mesma maneira -->
             </div>
           </div>
         </div>
