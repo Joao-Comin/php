@@ -1,0 +1,42 @@
+{% extends 'Base.html' %}
+{% block conteudo %}
+
+<style>
+    .card a {
+        color: black; 
+    }
+
+    /* Mantem a cor ao passar o mouse */
+    .card a:hover {
+        text-decoration: underline;
+        color: darkgray;
+    }
+</style>
+
+<div class="container-fluid py-5 text-bg-light">
+    <div class="row">
+        <!-- Posts -->
+        <div class="col-md-8">
+            <div class="row text-bg-light">
+              {% for post in posts %}
+                <div class="col-md-6">
+                    <div class="card mb-4 text-bg-light">
+                        <div class="card-body">
+                            <a href="{{url('post/'~post.id)}}" class="text-decoration-none">
+                                <h5 class="card-title">{{post.titulo}}</h5>
+                                <p class="card-text">{{resumirTexto(post.texto, 100)}}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            {%include 'Sidebar.html'%}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

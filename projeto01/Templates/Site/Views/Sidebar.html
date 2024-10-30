@@ -6,7 +6,7 @@
         </a>
         <div class="list-group list-group-flush border-bottom scrollarea">
             {% for categoria in categorias %}
-            <a href="#" class="list-group-item list-group-item-action text-bg-light py-3 lh-sm" aria-current="true">
+            <a href="{{'categoria/'~categoria.id}}" class="list-group-item list-group-item-action text-bg-light py-3 lh-sm" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">{{categoria.titulo}}</strong>
                 </div>

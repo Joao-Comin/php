@@ -50,4 +50,15 @@ class SiteControlador extends Controlador {
         
     }
 
+    public function categoria(int $id): void
+    {
+        $posts = (new CategoriaModelo())->posts($id);
+        echo $this->template->renderizar('categoria.html',[
+            'posts' => $posts,
+            'categorias' => (new CategoriaModelo())->busca()
+        ]);
+
+        var_dump($posts);
+    }
+
 }

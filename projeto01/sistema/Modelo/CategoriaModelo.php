@@ -25,5 +25,15 @@ class CategoriaModelo
         return $resultado;
      }
 
+     public function posts(int $id): array
+     {
+        
+        $query = "SELECT * FROM posts WHERE categoria_id = {$id} ORDER BY id DESC";
+        $stmt = Conexao::getInstancia()->query($query);
+        $resultado = $stmt->fetchAll();
+
+        return $resultado;
+     }
+
  
 }
