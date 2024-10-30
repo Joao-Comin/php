@@ -20,12 +20,12 @@
           <li><a href="{{url()}}" class="nav-link px-2 text-bg-dark">Home</a></li>
           <div class="dropdown">
             <button class="btn text-bg-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Categorias
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              {% for categoria in categorias %}
+              <li><a class="dropdown-item" href="#">{{categoria.titulo}}</a></li>
+              {% endfor %}
             </ul>
           </div>
           <li><a href="{{url('sobre')}}" class="nav-link px-2 text-white">Sobre</a></li>

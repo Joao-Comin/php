@@ -5,6 +5,8 @@ namespace Sistema\Controlador;
 use Sistema\Nucleo\Controlador;
 use Sistema\Modelo\PostModelo;
 use Sistema\Nucleo\Funcoes; 
+use Sistema\Modelo\CategoriaModelo;
+
 
 class SiteControlador extends Controlador {
 
@@ -15,7 +17,8 @@ class SiteControlador extends Controlador {
     {
         $posts = (new PostModelo())->busca();
         echo $this->template->renderizar('index.html',[
-            'posts' => $posts
+            'posts' => $posts,
+            'categorias' => (new CategoriaModelo())->busca()
             
         ]);
     }
@@ -41,7 +44,8 @@ class SiteControlador extends Controlador {
         }
 
         echo $this->template->renderizar('post.html',[
-            'post' => $post
+            'post' => $post,
+            'categorias' => (new CategoriaModelo())->busca()
         ]);
         
     }
