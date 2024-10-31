@@ -1,0 +1,19 @@
+{% extends 'Base.html' %}
+
+{% block corpo %}
+<body>
+    {% block topo %}
+    {# Aqui você pode adicionar o conteúdo do topo, se necessário #}
+    {% endblock %}
+
+    <div class="container my-5"> 
+        {% block conteudo %}
+        {%include 'topo.html'%}
+        {% endblock %}
+    </div>
+
+    {% block footer %}
+    {%include 'rodape.html'%}
+    {% endblock %}
+</body>
+{% endblock %}

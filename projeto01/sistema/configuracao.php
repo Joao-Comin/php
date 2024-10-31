@@ -18,3 +18,4 @@ define('URL_PRODUCAO','http://localhost:8081/projeto01');
 define('URL_DESENVOLVIMENTO','http://unset.com.br');
 
 define('URL_SITE','/projeto01/');
+define('URL_ADMIN','/projeto01/admin/');

@@ -15,6 +15,11 @@ SimpleRouter::post(URL_SITE.'buscar','SiteControlador@buscar');
 
 SimpleRouter::get(URL_SITE.'404','SiteControlador@erro404');
 
+SimpleRouter::group(['namespace' => 'Admin'], function () {
+    // Controllers Within The "App\Http\Controllers\Admin" Namespace
+    SimpleRouter::get(URL_ADMIN.'dashbord','AdminDashbord@dashbord');
+});
+
 
 SimpleRouter::start();
 } catch (Pecee\SimpleRouter\Exceptions\NotFoundHttpException $ex) {

@@ -7,23 +7,13 @@
     <link rel="stylesheet" href="{{url('/Templates/Assets/Css/estilos.css')}}">
     <link rel="stylesheet" href="{{url('/Templates/admin/Assets/Css/admin.css')}}">
     <title>
-        {% if titulo %}
-        {{titulo}}
-        {% else %}
-        {{constant('SITE_NOME')}}
-        {% endif %}
+        Painel Admin
     </title>
 </head>
 <body>
-     
-    {% include 'Topo.html' %}
-    
-    <div class="container my-5"> 
-        {% block conteudo %}{% endblock %}
-    </div>
-
-    {% include 'Rodape.html' %}
-
+        <div class="container-fluid">
+        {% block corpo %}{% endblock %}
+        </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{{url('Templates/Assets/Js/scripts.js')}}"></script>
