@@ -33,7 +33,7 @@ class AdminPosts extends AdminControlador{
 
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if(isset($dados)){
-            
+            (new PostModelo())->atualizar($dados,$id);
             Funcoes::redirecionar('admin/posts/listar');
         }
         

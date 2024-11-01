@@ -41,6 +41,14 @@ class PostModelo
       $stmt->execute($dados);
      }
 
+     public function atualizar(array $dados, int $id):void
+     {
+      $query = "IUPDATE posts SET categoria_id = :categoria_id, titulo = :titulo', texto = :status, status = :status WHERE id={$id} ";
+      $stmt = Conexao::getInstancia()->prepare($query);
+      $stmt->execute([$dados['titulo'],$dados['texto'],$dados['status']]);
+     }
+
+
 
  
 }
