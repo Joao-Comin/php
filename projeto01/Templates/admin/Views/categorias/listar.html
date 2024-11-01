@@ -28,7 +28,9 @@
                           <th scope="row">{{categoria.id}}</th>
                           <td>{{categoria.titulo}}</td>
                           <td>{{categoria.status}}</td>
-                          <td></td>
+                          <td>
+                            <a href="{{url('admin/categorias/editar/'~categoria.id)}}">Editar</a>
+                          </td>
                         </tr>
                         {% endfor %}
                     </tbody>

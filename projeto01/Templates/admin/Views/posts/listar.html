@@ -28,7 +28,9 @@
                           <th scope="row">{{post.id}}</th>
                           <td>{{post.titulo}}</td>
                           <td>{{post.status}}</td>
-                          <td></td>
+                          <td class="text-center" >
+                            <a href="{{url('admin/posts/editar/'~post.id)}}">Editar</a>
+                          </td>
                         </tr>
                         {% endfor %}
                     </tbody>
