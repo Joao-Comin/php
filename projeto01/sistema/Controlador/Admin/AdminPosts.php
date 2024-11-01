@@ -2,6 +2,8 @@
 namespace Sistema\Controlador\Admin;
 
 use Sistema\Modelo\PostModelo;
+use Sistema\Modelo\CategoriaModelo;
+use Sistema\Nucleo\Funcoes;
 
 class AdminPosts extends AdminControlador{
 
@@ -16,10 +18,14 @@ class AdminPosts extends AdminControlador{
     {
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if(isset($dados)){
-            
+            (new PostModelo())->armazenar($dados);
+            Funcoes::redirecionar('admin/posts/listar');
         }
         
-        echo $this->template->renderizar('posts/formulario.html',[]);
+        echo $this->template->renderizar('posts/formulario.html',[
+            'categorias'=>(new CategoriaModelo())->busca()
+        ]);
+
 
     }
 }

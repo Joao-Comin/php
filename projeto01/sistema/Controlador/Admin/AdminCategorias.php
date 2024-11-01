@@ -2,6 +2,7 @@
 namespace Sistema\Controlador\Admin;
 
 use Sistema\Modelo\CategoriaModelo;
+use Sistema\Nucleo\Funcoes;
 
 class AdminCategorias extends AdminControlador{
 
@@ -16,7 +17,8 @@ class AdminCategorias extends AdminControlador{
     {
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if(isset($dados)){
-
+            (new CategoriaModelo())->armazenar($dados);
+            Funcoes::redirecionar('admin/categorias/listar');
         }
         
         echo $this->template->renderizar('categorias/formulario.html',[]);

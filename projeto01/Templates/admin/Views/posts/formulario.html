@@ -20,8 +20,9 @@
                   <div class="col-md-6"></div>
                   <div class="mb-3">
                     <select name="categoria_id" class="form-select">
-                      <option value="1">Categoria 1</option>
-                      <option value="2">Categoria 2</option>
+                      {%for categoria in categorias%}
+                      <option value="{{categoria.id}}">{{categoria.titulo}}</option>
+                      {%endfor%}
                     </select>
                   </div>
                   <div class="col-md-6"></div>
