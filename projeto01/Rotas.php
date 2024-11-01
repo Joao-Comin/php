@@ -18,6 +18,11 @@ SimpleRouter::get(URL_SITE.'404','SiteControlador@erro404');
 SimpleRouter::group(['namespace' => 'Admin'], function () {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
     SimpleRouter::get(URL_ADMIN.'dashbord','AdminDashbord@dashbord');
+    
+    //admin posts
+    SimpleRouter::get(URL_ADMIN.'posts/listar','AdminPosts@listar');
+    //admin categorias
+    SimpleRouter::get(URL_ADMIN.'categorias/listar','AdminCategorias@listar');
 });
 
 

@@ -2,18 +2,39 @@
 
 {% block corpo %}
 <body>
-    {% block topo %}
-    {# Aqui você pode adicionar o conteúdo do topo, se necessário #}
-    {% endblock %}
 
-    <div class="container my-5"> 
-        {% block conteudo %}
-        {%include 'topo.html'%}
-        {% endblock %}
+    {% include 'topo.html' %}
+
+    <!-- Contêiner principal com Bootstrap -->
+    <div class="container-fluid">
+        <div class="row">
+            
+            <!-- Menu lateral (sidebar) -->
+            <div class="col-md-3 col-lg-2 bg-light">
+                {% include 'menu.html' %}
+            </div>
+
+            
+            <div class="col-md-1"></div> <!-- Espaço extra entre o sidebar e o conteúdo -->
+
+            {% block conteudo %}
+            <!-- Conteúdo principal (dashboard) -->
+            <div class="col-md-8 col-lg-9">
+                <div class="card border-0 shadow-sm mt-3">
+                    <div class="card-header bg-white border-0">
+                        <h5 class="card-title">Dashboard</h5>
+                    </div>
+                    <div class="card-body">
+                        Conteúdo em desenvolvimento
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+
+        </div>
     </div>
 
-    {% block footer %}
-    {%include 'rodape.html'%}
-    {% endblock %}
+    {% include 'rodape.html' %}
+
 </body>
 {% endblock %}
