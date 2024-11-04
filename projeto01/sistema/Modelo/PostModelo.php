@@ -48,6 +48,12 @@ class PostModelo
       $stmt = Conexao::getInstancia()->prepare($query);
       $stmt->execute($dados);
      }
+     public function deletar(int $id):void
+     {
+      $query = "DELETE FROM posts WHERE id = {$id}";
+      $stmt = Conexao::getInstancia()->prepare($query);
+      $stmt->execute();
+     }
 
 
  

@@ -42,4 +42,9 @@ class AdminPosts extends AdminControlador{
             'categorias'=>(new CategoriaModelo())->busca()
         ]);
 }
+public function deletar(int $id):void
+    {
+        (new PostModelo())->deletar($id);
+            Funcoes::redirecionar('admin/posts/listar');
+}
 }

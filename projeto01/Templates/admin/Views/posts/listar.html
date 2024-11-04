@@ -1,6 +1,14 @@
 {% extends 'dashbord.html' %}
 
     {% block conteudo %}
+
+    <style>
+      .fa-sharp-duotone, .fa-solid {
+        text-decoration: none;
+        color: white;
+      }
+    </style>
+    
   <!-- Conteúdo principal (dashboard) -->
   <div class="col-md-8 col-lg-8">
     <div class="card border-1 shadow-sm m-2 bg-dark">
@@ -29,7 +37,8 @@
                           <td>{{post.titulo}}</td>
                           <td>{{post.status}}</td>
                           <td class="text-center" >
-                            <a href="{{url('admin/posts/editar/'~post.id)}}">Editar</a>
+                            <a href="{{url('admin/posts/editar/'~post.id)}}" class="fa-sharp-duotone fa-solid fa-pencil m-2"></a>
+                            <a href="{{url('admin/posts/deletar/'~post.id)}}" class="fa-sharp-duotone fa-solid fa-trash"></a>
                           </td>
                         </tr>
                         {% endfor %}

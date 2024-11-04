@@ -48,7 +48,11 @@ class CategoriaModelo
       $stmt = Conexao::getInstancia()->prepare($query);
       $stmt->execute([$dados['titulo'],$dados['texto'],$dados['status']]);
      }
+     public function deletar(int $id):void
+     {
+      $query = "DELETE FROM categorias WHERE id = {$id}";
+      $stmt = Conexao::getInstancia()->prepare($query);
+      $stmt->execute();
+     }
 
-     
- 
 }
