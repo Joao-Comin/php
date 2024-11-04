@@ -14,11 +14,16 @@
         <div class="card-header text-bg-dark border-1">
             <h5 class="card-title">Categorias</h5>
         </div>
-      <div class="card border-0 shadow-sm">
-        <div class="card-header bg-dark border-0">
-          <a href="{{url('admin/categorias/cadastrar')}}" class="btn btn-primary">Cadastrar</a>
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-dark border-0">
+            <div class="d-flex justify-content-between align-items-center text-white">
+              <span>
+                Total de Categorias: {{total.total}} - ativos: {{total.ativo}} - inativos: {{total.inativo}}
+              </span>
+              <a href="{{url('admin/categorias/cadastrar')}}" class="btn btn-primary">Cadastrar</a>
+            </div>
+          </div>
         </div>
-      </div>
         <div class="card-body">
             <div class="table-responsive">
             <table class="table table-striped table-dark">
