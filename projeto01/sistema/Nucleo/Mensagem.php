@@ -1,6 +1,8 @@
 <?php
 
-namespace projeto01\sistema\Nucleo;
+namespace Sistema\Nucleo;
+
+use Sistema\Nucleo\Sessao;
 
 /**
  * Classe responsavel por exibir mensagens do sistema
@@ -37,5 +39,9 @@ class Mensagem
     public function __toString()
     {
         return $this->renderizar();
+    }
+    public function flash():void
+    {
+        (new Sessao())->criar('flash',$this);
     }
 }

@@ -3,6 +3,7 @@
 namespace sistema\Nucleo;
 
 use Exception;
+use Sistema\Nucleo\Sessao;
 class Funcoes {
 
     public static function saudacao(): string {
@@ -222,5 +223,14 @@ class Funcoes {
         header("Location: {$local} ");
 
         exit;
+    }
+    public static function flash(): ?string
+    {
+        $sessao = new Sessao();
+
+        if($flash = $sessao->flash()){
+            echo $flash;
+        }
+        return null;
     }
 }

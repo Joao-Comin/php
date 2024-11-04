@@ -49,6 +49,13 @@ class Template
             }
         )
         ),
+        $this->twig->addFunction(
+            new \Twig\TwigFunction('flash', function(){
+            
+                return Funcoes::flash();
+            }
+        )
+        ),
 
 
 

@@ -25,6 +25,7 @@ class AdminPosts extends AdminControlador{
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if(isset($dados)){
             (new PostModelo())->armazenar($dados);
+            $this->mensagem->sucesso('Post cadastrado com sucesso')->flash();
             Funcoes::redirecionar('admin/posts/listar');
         }
         
@@ -40,6 +41,7 @@ class AdminPosts extends AdminControlador{
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if(isset($dados)){
             (new PostModelo())->atualizar($dados,$id);
+            $this->mensagem->sucesso('Editado Com Sucesso')->flash();
             Funcoes::redirecionar('admin/posts/listar');
         }
         
