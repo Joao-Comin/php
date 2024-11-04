@@ -3,20 +3,14 @@
 namespace Sistema\Modelo;
 
 use Sistema\Nucleo\Conexao;
-class PostModelo
+use Sistema\Nucleo\Modelo;
+
+class PostModelo extends Modelo
 {
- 
-     public function busca(?string $termo = null): array
-     {
-      $termo = ($termo ? "WHERE {$termo}":'');
-        
-        $query = "SELECT * FROM posts {$termo} ";
-        $stmt = Conexao::getInstancia()->query($query);
-        $resultado = $stmt->fetchAll();
-
-        return $resultado;
-     }
-
+      public function __construct()
+      {
+         parent::__construct('posts');
+      }
      public function buscaPorId(int $id):bool|object
      {
       $query = "SELECT * FROM posts WHERE id = {$id}";

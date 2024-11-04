@@ -15,7 +15,7 @@ class SiteControlador extends Controlador {
     }
     public function index(): void
     {
-        $posts = (new PostModelo())->busca();
+        $posts = (new PostModelo())->busca(NULL, 'titulo ASC');
         echo $this->template->renderizar('index.html',[
             'posts' => $posts,
             'categorias' => (new CategoriaModelo())->busca()
