@@ -82,6 +82,30 @@ class Modelo{
             return null;
         }
     }
+
+    protected function atualizar(array $dados, string $termos){
+        try{
+            $set = [];
+
+            foreach ($dados as $chave => $valor ){
+                $set[] = "{$chave} = :{$valor}";
+            }
+            $set = implode(', ',$set);;
+            $query = "UPDATE ".$this->tabela." SET {$set} WHERE {$termos}";
+            $stmt = Conexao::getInstancia()->prepare($query);
+            $stmt->execute($this->filtro($dados));
+            return ($stmt->rowCount() ?? 1);
+            
+        }catch(\PDOException $ex) {
+            echo $this->erro = $ex;
+            return null;
+        }
+
+    }
+
+
+
+
     private function filtro(array $dados)
     {
         $filtro = [];

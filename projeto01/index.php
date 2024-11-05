@@ -8,15 +8,20 @@ require __DIR__ . '/vendor/autoload.php';
 $dados = filter_input_array(INPUT_POST,FILTER_DEFAULT);
 var_dump($dados);
 echo '<hr>';
-$colunas = implode(',',array_keys($dados));
-var_dump($colunas);
+$set = [];
+
+foreach ($dados as $chave => $valor ){
+    $set[] = "{$chave} = :{$valor}";
+    var_dump($set);
+    echo '<hr>';
+}
+$set = implode(', ',$set);
+var_dump($set);
 echo '<hr>';
-$valores = ':'.implode(',:',array_keys($dados));
-var_dump($valores);
-echo '<hr>';
-$query = "INSERT INTO posts ({$colunas}) VALUES ({$valores}) ";
+$query = "UPDATE categorias SET {$set} WHERE id = 7";
 var_dump($query);
 echo '<hr>';
+
 
 
 // ?>
@@ -28,6 +33,7 @@ INSERT INTO `categorias` (`id`, `titulo`, `texto`, `status`) VALUES (NULL, 'test
 
 <input type="text" name="nome">
 <input type="text" name="email">
+<input type="text" name="idade">
 <input type="submit">
 
 
