@@ -2,7 +2,6 @@
 
 namespace Sistema\Nucleo;
 
-use PDOException;
 use Sistema\Nucleo\Conexao;
 
 class Modelo{
@@ -65,5 +64,31 @@ class Modelo{
         }catch (\PDOException $ex){
             $this->erro = $ex;
         }
+    }
+
+
+    protected function cadastrar(array $dados)
+    {
+        try {
+            $colunas = implode(',',array_keys($dados));
+            $valores = ':'.implode(',:',array_keys($dados));
+            $query = "INSERT INTO".$this->tabela." ({$colunas}) VALUES ({$valores}) ";
+            $stmt = Conexao::getInstancia()->prepare($query);
+            $stmt->execute($this->filtro($dados));
+            return Conexao::getInstancia()->lastInsertId();
+
+        } catch (\PDOException $ex) {
+            echo $this->erro = $ex;
+            return null;
+        }
+    }
+    private function filtro(array $dados)
+    {
+        $filtro = [];
+
+        foreach($dados as $chave => $valor){
+            $filtro[$chave] = (is_null($valor) ? null : filter_var($valor, FILTER_DEFAULT));
+        }
+        return $filtro; 
     }
 }
