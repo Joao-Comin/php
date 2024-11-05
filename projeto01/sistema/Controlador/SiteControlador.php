@@ -15,9 +15,9 @@ class SiteControlador extends Controlador {
     }
     public function index(): void
     {
-        $posts = (new PostModelo())->busca(NULL, 'titulo ASC');
+        $posts = (new PostModelo())->busca("status = 1 ");
         echo $this->template->renderizar('index.html',[
-            'posts' => $posts,
+            'posts' => $posts->resultado(true),
             'categorias' => (new CategoriaModelo())->busca()
             
         ]);
@@ -61,16 +61,22 @@ class SiteControlador extends Controlador {
         var_dump($posts);
     }
 
-    public function buscar():void
+    public function buscar(): void
     {
-        $busca = filter_input(INPUT_POST,'busca', FILTER_DEFAULT);
-
-        if(isset($busca)){
-            $posts = (new PostModelo())->pesquisa($busca);
+        $busca = filter_input(INPUT_POST, 'busca', FILTER_DEFAULT);
+    
+        if (isset($busca)) {
+            // Corrigindo a string da consulta SQL
+            $posts = (new PostModelo())->busca("status = 1 AND titulo LIKE '%{$busca}%'")->resultado(true);
             
-            foreach($posts as $post){
-                echo $post->titulo.'<hr>'.'<div class"text-white" ';
-        }}
-
-
-}}
+            // Verificando se o resultado é um array antes do foreach
+            if (is_array($posts)) {
+                foreach ($posts as $post) {
+                    echo $post->titulo . '<hr><div class="text-white">' . $post->conteudo . '</div>';
+                }
+            } else {
+                echo "Nenhum post encontrado.";
+            }
+        }
+    }
+}

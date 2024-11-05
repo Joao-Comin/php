@@ -162,6 +162,30 @@ class Modelo{
         return $busca->resultado();
 
     }
+    public function apagar(string $termos){
+        try{
+            
+            $query = "DELETE FROM ".$this->tabela." WHERE {$termos} ";
+            $stmt = Conexao::getInstancia()->prepare($query);
+            $stmt->execute();
+            return true;
+            
+        }catch(\PDOException $ex) {
+            echo $this->erro = $ex;
+            return null;
+        }
+
+    }
+
+    public function total():int
+    {
+     $stmt = Conexao::getInstancia()->prepare($this->query);
+     $stmt->execute();
+
+     return $stmt->rowCount();
+    }
+
+
     public function salvar()
     {
         
