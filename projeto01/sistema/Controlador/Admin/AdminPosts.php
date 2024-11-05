@@ -50,9 +50,16 @@ class AdminPosts extends AdminControlador{
 
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if(isset($dados)){
-            (new PostModelo())->atualizar($dados,$id);
-            $this->mensagem->sucesso('Editado Com Sucesso')->flash();
-            Funcoes::redirecionar('admin/posts/listar');
+            $post= (new PostModelo())->buscaPorId($id);
+            $post->titulo = $dados['titulo'];
+            $post->categoria_id = $dados['categoria_id'];
+            $post->texto = $dados['texto'];
+            $post->status = $dados['status'];
+
+            if($post->salvar()){
+                $this->mensagem->sucesso('Post atualizado com sucesso')->flash();
+                Funcoes::redirecionar('admin/posts/listar');
+            }
         }
         
         echo $this->template->renderizar('posts/formulario.html',[
