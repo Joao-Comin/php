@@ -3,6 +3,7 @@
 namespace Sistema\Nucleo;
 
 use Sistema\Nucleo\Conexao;
+use Sistema\Nucleo\Mensagem;
 
 class Modelo{
 
@@ -14,10 +15,13 @@ class Modelo{
     protected $ordem;
     protected $limite;
     protected $offset;
+    protected $mensagem;
 
     public function __construct(string $tabela)
     {
         $this->tabela = $tabela;
+
+        $this->mensagem = new Mensagem(); 
     }
 
     public function ordem(string $ordem){
@@ -36,6 +40,21 @@ class Modelo{
         $this->offset = " OFFSET {$offset}";
         return $this;
 
+    }
+    public function erro(){
+        return $this->erro;
+    }
+    public function mensagem(){
+        return $this->mensagem;
+    }
+
+    public function __set($nome, $valor)
+    {
+        if(empty($this->dados)){
+            $this->dados = new \stdClass();
+        }
+
+        $this->dados->$nome = $valor;
     }
     public function busca(?string $termos = null, ?string $parametros = null, string $colunas = '*')
     {
@@ -72,7 +91,7 @@ class Modelo{
         try {
             $colunas = implode(',',array_keys($dados));
             $valores = ':'.implode(',:',array_keys($dados));
-            $query = "INSERT INTO".$this->tabela." ({$colunas}) VALUES ({$valores}) ";
+            $query = "INSERT INTO ".$this->tabela." ({$colunas}) VALUES ({$valores}) ";
             $stmt = Conexao::getInstancia()->prepare($query);
             $stmt->execute($this->filtro($dados));
             return Conexao::getInstancia()->lastInsertId();
@@ -104,8 +123,6 @@ class Modelo{
     }
 
 
-
-
     private function filtro(array $dados)
     {
         $filtro = [];
@@ -114,5 +131,24 @@ class Modelo{
             $filtro[$chave] = (is_null($valor) ? null : filter_var($valor, FILTER_DEFAULT));
         }
         return $filtro; 
+    }
+
+    protected function armazenarpost()
+    {
+        $dados = (array) $this->dados;
+
+        return $dados;
+    }
+    public function salvar()
+    {
+        if(empty($this->id)){
+            $this->cadastrar($this->armazenarpost());
+            if($this->erro()){
+                $this->mensagem->erro('Erro de sistema ao tentar cadastrar os dados');
+                return false;
+            }
+        }
+        
+        return true;
     }
 }

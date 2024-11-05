@@ -11,7 +11,7 @@ class AdminPosts extends AdminControlador{
     {
         $post = new PostModelo();
         echo $this->template->renderizar('posts/listar.html',[
-            'posts' => $post-> busca()->ordem('id DESC')->limite(3)->offset(2)->resultado(true),
+            'posts' => $post-> busca()->ordem('id DESC')->resultado(true),
             'total' => [
                 'total'=> $post->total(),
                 'ativo' => $post->total('status = 1'),
@@ -24,9 +24,19 @@ class AdminPosts extends AdminControlador{
     {
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if(isset($dados)){
-            (new PostModelo())->armazenar($dados);
-            $this->mensagem->sucesso('Post cadastrado com sucesso')->flash();
-            Funcoes::redirecionar('admin/posts/listar');
+            
+            $post= new PostModelo();
+            $post->titulo = $dados['titulo'];
+            $post->categoria_id = $dados['categoria_id'];
+            $post->texto = $dados['texto'];
+            $post->status = $dados['status'];
+
+            if($post->salvar()){
+                $this->mensagem->sucesso('Post cadastrado com sucesso')->flash();
+                Funcoes::redirecionar('admin/posts/listar');
+            }
+
+           
         }
         
         echo $this->template->renderizar('posts/formulario.html',[
