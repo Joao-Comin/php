@@ -14,8 +14,8 @@ class AdminPosts extends AdminControlador{
             'posts' => $post-> busca()->ordem('id DESC')->resultado(true),
             'total' => [
                 'total'=> $post->total(),
-                'ativo' => $post->total('status = 1'),
-                'inativo' => $post->total('status = 0')
+                'ativo' => $post->busca('status = 1')->total(),
+                'inativo' => $post->busca('status = 0')->total()
             ]
         ]);
         
@@ -77,7 +77,7 @@ public function deletar(int $id): void
             Funcoes::redirecionar('admin/posts/listar');
         } else {
            
-            if ($post->apagar("id = {$id}")) { 
+            if ($post->deletar()) { 
                 $this->mensagem->sucesso('Post Apagado Com Sucesso')->flash();
                 Funcoes::redirecionar('admin/posts/listar');
             } else {

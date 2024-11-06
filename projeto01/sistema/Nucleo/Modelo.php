@@ -5,7 +5,7 @@ namespace Sistema\Nucleo;
 use Sistema\Nucleo\Conexao;
 use Sistema\Nucleo\Mensagem;
 
-class Modelo{
+abstract class Modelo{
 
     protected $dados;
     protected $query;
@@ -174,7 +174,15 @@ class Modelo{
             echo $this->erro = $ex;
             return null;
         }
+    }
 
+    public function deletar()
+    {
+        if(empty($this->id)){
+            return false;
+        }
+        $deletar = $this->apagar("id = {$this->id}");
+        return $deletar;
     }
 
     public function total():int
