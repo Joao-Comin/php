@@ -15,8 +15,13 @@ SimpleRouter::post(URL_SITE.'buscar','SiteControlador@buscar');
 
 SimpleRouter::get(URL_SITE.'404','SiteControlador@erro404');
 
+
+
 SimpleRouter::group(['namespace' => 'Admin'], function () {
-    // Controllers Within The "App\Http\Controllers\Admin" Namespace
+    
+    //ADMIN LOGIN
+    SimpleRouter::match(['get','post'], URL_ADMIN . 'login', 'AdminLogin@login');
+    //DASHBORD
     SimpleRouter::get(URL_ADMIN.'dashbord','AdminDashbord@dashbord');
     
     //admin posts
